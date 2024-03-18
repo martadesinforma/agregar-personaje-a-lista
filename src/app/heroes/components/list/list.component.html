@@ -1,0 +1,17 @@
+<h3>Listado de Héroes</h3>
+
+<!-- solo quiero que se muestre el boton si hay heroes para borrar -->
+<button *ngIf="heroNames.length >0" (click)="removeLastHero()" class="btn btn-outline-danger"> Borrar ultimo heroe</button>
+
+<!-- solo quiero mostrar este h3 cuando se borra algun heroe pero si no se borra ninguno no quiero que esté el h3 pero quiero que esté el h3 que dice 'no ha borrado nada' -->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Heroe borrado <small class="text-danger">{{deletedHero}}</small></h3>
+</div>
+
+
+<!-- si he borrado algun heroe este h3 no debe de mostrarse pq si hemos borrado algo pero si no se ha borrado ningun heroe si quiero que se muestre este h3 -->
+<ng-template #nothingWasDeleted><h3>No ha borrado nada</h3></ng-template> <!-- <ng-template> es una directiva en Angular que permite definir un fragmento de código HTML que no se renderiza directamente en la página, pero que puede ser referenciado y utilizado en otros lugares de la plantilla. -->
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let  name of heroNames" class="list-group-item">{{name}}</li> <!-- para repetir un elemento uso el *ngFor="let name of heroNames". {{name}} hace referencia al nombre del valor que tiene la iteracion de heroNames en cada momento -->
+</ul>

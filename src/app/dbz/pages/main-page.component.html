@@ -1,0 +1,19 @@
+<h1>DBZ Personajes</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+
+    <dbz-list [characterList]="characters" (onDelete)="onDeleteCharacter($event)"></dbz-list>
+
+  </div>
+
+  <div class="col">
+
+    <!-- quiero escuchar el evento cuando mi dbz-add-character emita un nuevo personaje. -->
+    <!-- cuando dbz-add-character emita onNewCharacter quiero que en el componente padre que es el main-page.component.ts este creado el metodo onNewCharacter(character: Character)   -->
+    <!-- $event es el objeto que esta emitiendo el componente hijo add-character.component.ts -->
+    <dbz-add-character (onNewCharacter)="onNewCharacter($event)"></dbz-add-character>
+
+  </div>
+</div>
